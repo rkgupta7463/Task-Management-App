@@ -20,6 +20,7 @@ async def lifespan(app:FastAPI):
 
 app = FastAPI(lifespan=lifespan)
 app.include_router(router=authRouter,tags=["Auth"],prefix='/auth')
+app.include_router(router=authRouter,tags=["task"],prefix='/task')
 
 
 @app.get("/get_current_user")
