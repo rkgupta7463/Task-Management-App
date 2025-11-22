@@ -11,10 +11,14 @@ class UserAuthRepo(BaseRepository):
 
         return newUser
 
-    def user_exist_by_email(self,email:str):
-        user=self.session.query(User).filter(email=email).first()
+    def user_exist_by_email(self,email:str)->bool:
+        user=self.session.query(User).filter_by(email=email).first()
         return bool(user)
 
-    def get_user_by_email(self,email:str):
-        user=self.session.query(User).filter(email=email).first()
+    def get_user_by_email(self,email:str)->User:
+        user=self.session.query(User).filter_by(email=email).first()
+        return user
+    
+    def get_user_by_email(self,user_id:int)->User:
+        user=self.session.query(User).filter_by(id=user_id).first()
         return user
