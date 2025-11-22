@@ -36,7 +36,5 @@ class UserInLogin(BaseModel):
     email:EmailStr
     password:str
 
-class UserWithToken(BaseException):
+class UserWithToken(BaseModel):
     token:str
-name:str
-
