@@ -9,7 +9,7 @@ from datetime import datetime
 class Category(Base):
     __tablename__ = "categories"
 
-    id = Column(Integer, primary_key=True, index=True)
+    id = Column(Integer, primary_key=True,autoincrement=True, index=True)
     name = Column(String(150), unique=True, nullable=False)
 
     # Reverse relation → A category has many tasks
