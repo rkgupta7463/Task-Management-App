@@ -5,9 +5,11 @@ from datetime import datetime
 
 class CategoryCreation(BaseModel):
     name:str
+    # user_id:int
 
 class CategoryResponse(BaseModel):
     id:int
+    user_id:int
     name:str
 
 class TaskCreation(BaseModel):
