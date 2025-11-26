@@ -5,15 +5,20 @@ from sqlalchemy.orm import relationship
 from db.database import Base
 from datetime import datetime
 
-
 class Category(Base):
     __tablename__ = "categories"
 
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String(150), unique=True, nullable=False)
 
-    # Reverse relation → A category has many tasks
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
+
+    user = relationship("User", back_populates="categories")
+
     tasks = relationship("Task", back_populates="category")
+
+    created_at = Column(DateTime, default=datetime.utcnow)
+    modified_at = Column(DateTime, default=datetime.utcnow)
 
 
 class Task(Base):
@@ -23,13 +28,16 @@ class Task(Base):
     task_name = Column(String(150), index=True)
     description = Column(String(250))
 
-    # New DateTime fields
     start_date = Column(DateTime, default=datetime.utcnow)
     due_date = Column(DateTime)
 
-    # Foreign key
     category_id = Column(Integer, ForeignKey("categories.id"), nullable=False)
-
-    # Relationship
     category = relationship("Category", back_populates="tasks")
-    
+
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
+    user = relationship("User", back_populates="tasks")
+
+    created_at = Column(DateTime, default=datetime.utcnow)
+    modified_at = Column(DateTime, default=datetime.utcnow)
+
+

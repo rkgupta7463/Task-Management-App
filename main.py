@@ -6,6 +6,8 @@ from contextlib import asynccontextmanager
 from db.models import userModel
 from utils.init_db import create_tables
 from router.auth import authRouter
+from router.taskRoute import taskRouter
+from router.categoryRoute import categoryRouter
 from db.database import get_db
 from utils.protectedRoute import get_current_user
 from db.schema.userSchemas import UserResponse
@@ -20,7 +22,8 @@ async def lifespan(app:FastAPI):
 
 app = FastAPI(lifespan=lifespan)
 app.include_router(router=authRouter,tags=["Auth"],prefix='/auth')
-app.include_router(router=authRouter,tags=["task"],prefix='/task')
+app.include_router(router=taskRouter,tags=["task"],prefix='/task')
+app.include_router(router=categoryRouter,tags=["category"],prefix='/category')
 
 
 @app.get("/get_current_user")
