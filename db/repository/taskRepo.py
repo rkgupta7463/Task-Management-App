@@ -12,17 +12,17 @@ class TaskRepo(BaseRepository):
 
         return newCategory
 
-    def get_category_all(self,user_id:int)->Task:
-        category=self.session.query(Task).filter_by(user_id=user_id).all()
-        return category
+    def get_task_all(self,user_id:int)->Task:
+        tasks=self.session.query(Task).filter_by(user_id=user_id).all()
+        return tasks
 
-    def get_category_by_id(self,cat_id:int,user_id:int)->Task:
-        category=self.session.query(Task).filter_by(id=cat_id,user_id=user_id).first()
-        return category
+    def get_task_by_id(self,task_id:int,user_id:int)->Task:
+        tasks=self.session.query(Task).filter_by(id=task_id,user_id=user_id).first()
+        return tasks
 
-    def get_category_by_name(self, cat_name: str,user_id:int) -> Task:
+    def get_task_by_name(self, task_name: str,user_id:int) -> Task:
         return (
             self.session.query(Task)
-            .filter(Task.name.ilike(f"%{cat_name}%")).filter_by(user_id=user_id)
+            .filter(Task.task_name.ilike(f"%{task_name}%")).filter_by(user_id=user_id)
             .all()
         )
