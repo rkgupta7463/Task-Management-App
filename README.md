@@ -110,7 +110,6 @@ uvicorn main:app --reload
 ### Authentication
 - POST /auth/signup  
 - POST /auth/login  
-- GET /auth/me  
 
 ### Users
 - GET /users/
