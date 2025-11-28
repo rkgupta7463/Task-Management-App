@@ -119,15 +119,18 @@ uvicorn main:app --reload
 - DELETE /users/{user_id}
 
 ### Tasks
-- POST /tasks/
-- GET /tasks/
-- GET /tasks/{task_id}
+- POST /task/add
+- GET /task/all
+- GET /tasks/by?task_name=<task_name>
+- GET /task/{task_id}
 - PUT /tasks/{task_id}
 - DELETE /tasks/{task_id}
 
 ### Categories
-- POST /categories/
-- GET /categories/
+- POST /category/add
+- GET /category/all
+- GET /category/by?cat_name=<cat_name>
+- GET /category/{category_id}
 - DELETE /categories/{category_id}
 
 ---
