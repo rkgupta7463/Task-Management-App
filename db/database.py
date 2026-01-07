@@ -4,11 +4,20 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 # SQLite URL format
-SQLALCHEMY_DATABASE_URL = "sqlite:///./test.db"
+DB_USER = "app_user"
+DB_PASSWORD = "app_password"
+DB_HOST = "127.0.0.1"   # better than localhost
+DB_PORT = 3306
+DB_NAME = "app_db"
+
+SQLALCHEMY_DATABASE_URL = (
+    f"mysql+pymysql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+)
 
 # Create engine
 engine = create_engine(
-    SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}
+    SQLALCHEMY_DATABASE_URL,
+    pool_pre_ping=True
 )
 
 # Create SessionLocal class to handle sessions

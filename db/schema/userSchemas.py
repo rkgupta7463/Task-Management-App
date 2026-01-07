@@ -1,6 +1,5 @@
 # schemas.py
-from pydantic import BaseModel,EmailStr
-from typing import Union
+from pydantic import BaseModel,EmailStr,ConfigDict
 
 class UserBase(BaseModel):
     name: str
@@ -19,9 +18,7 @@ class UserResponse(BaseModel):
     email: EmailStr
     # password:str
 
-    class Config:
-        orm_mode = True
-
+    model_config = ConfigDict(from_attributes=True)
 
 class UserUpdate(BaseModel):
     id: int
@@ -29,8 +26,7 @@ class UserUpdate(BaseModel):
     email: EmailStr
     password:str
 
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)
 
 class UserInLogin(BaseModel):
     email:EmailStr
