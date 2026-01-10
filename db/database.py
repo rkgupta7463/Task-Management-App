@@ -5,10 +5,10 @@ from sqlalchemy.orm import sessionmaker
 
 # SQLite URL format
 DB_USER = "app_user"
-DB_PASSWORD = "app_password"
+DB_PASSWORD = "app_pass"
 DB_HOST = "127.0.0.1"   # better than localhost
 DB_PORT = 3306
-DB_NAME = "app_db"
+DB_NAME = "task_mang_db"
 
 SQLALCHEMY_DATABASE_URL = (
     f"mysql+pymysql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"

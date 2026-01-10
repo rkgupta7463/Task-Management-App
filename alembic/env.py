@@ -1,8 +1,9 @@
 from logging.config import fileConfig
 from alembic import context
 from sqlalchemy import create_engine, pool
-
 from db.database import SQLALCHEMY_DATABASE_URL, Base
+from db.models.taskModel import Task,Category
+from db.models.userModel import User
 
 # Alembic Config object
 config = context.config
