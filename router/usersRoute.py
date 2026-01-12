@@ -12,16 +12,6 @@ app=APIRouter()
 def current_user(user:UserResponse=Depends(get_current_user)):
     return user
 
-# 1️⃣ Create User
-@app.post("/users/", response_model=userSchemas.UserResponse)
-def create_user(user: userSchemas.UserCreate, db: Session = Depends(get_db)):
-    db_user = userModel.User(name=user.name, email=user.email)
-    db.add(db_user)
-    db.commit()
-    db.refresh(db_user)
-    return db_user
-
-
 # 2️⃣ Read All Users
 @app.get("/users/", response_model=list[userSchemas.UserResponse])
 def get_users(db: Session = Depends(get_db)):
